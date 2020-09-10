@@ -4,5 +4,7 @@ export default {
   'profile':[],
   'successmessage':[],
   'errormessage':[],
+  'product_obj':[],
+  'category_obj':[],
 
 }
