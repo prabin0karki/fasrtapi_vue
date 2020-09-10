@@ -12,6 +12,7 @@
           <b-card-text>
             <p>Category Name: {{category_details.name}}</p>
             <p>Product Name: {{product_details.name}}</p>
+            <p>Product Price: {{product_details.price}}</p>
           </b-card-text>
         </b-card-body>
       </b-col>
