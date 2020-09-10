@@ -90,6 +90,7 @@
     <!-- <b-card class="mt-3" header="Form Data Result">
         <pre class="m-0">{{ form }}</pre>
     </b-card> -->
+
 </div>
 </template>
 
@@ -127,6 +128,16 @@ export default {
     methods: {
         ...mapActions(["listProfile", "listCategories", "listProduct"]),
 
+        toast(toaster, append = false) {
+        this.counter++
+        this.$bvToast.toast(`Product with that name already exists.`, {
+          title: `Product Error`,
+          toaster: toaster,
+          solid: true,
+          appendToast: append
+        })
+      },
+
         onSubmit() {
             this.$store.dispatch("createProduct", {
                 'name': this.product_name,
@@ -138,7 +149,8 @@ export default {
                     location.reload();
                     // this.$router.replace("/");
                 } else if (this.errormessage == 'errormessage') {
-                    alert("Signup error")
+                   this.toast('b-toaster-top-full')
+                    // alert("Signup error")
                 }
             })
         },
@@ -172,7 +184,8 @@ export default {
                     location.reload();
                     // this.$router.replace("/");
                 } else if (this.errormessage == 'errormessage') {
-                    alert("Signup error")
+                    
+                    // alert("Signup error")
                 }
             })
 

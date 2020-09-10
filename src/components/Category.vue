@@ -61,6 +61,8 @@
         </b-form>
     </b-modal>
 
+    
+
 </div>
 </template>
 
@@ -95,6 +97,17 @@ export default {
     methods: {
         ...mapActions(["listProfile", "listCategories"]),
 
+                toast(toaster, append = false) {
+        this.counter++
+        this.$bvToast.toast(`Category with that name already exists.`, {
+          title: `Category Error`,
+          toaster: toaster,
+          solid: true,
+          appendToast: append
+        })
+      },
+
+
         onSubmit() {
             this.$store.dispatch("createCategory", {
                 'name': this.category_name
@@ -102,7 +115,7 @@ export default {
                 if (this.successmessage == 'success') {
                     this.$router.replace("/");
                 } else if (this.errormessage == 'errormessage') {
-                    alert("Signup error")
+                    this.toast('b-toaster-top-full')
                 }
             })
         },
